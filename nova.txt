@@ -1,0 +1,114 @@
+package test1;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class nova extends JFrame{
+//PRE REGISTERED EMAIL ID AND PASSWORD IS:
+    //email=username@gmail.com
+    //password=password
+    
+    static String username;
+    static String password;
+    static String user;
+    static String pass;
+    JFrame stud, teach;
+    JPanel plain1, plain2, plain3, plain4, plain5 ;
+    JLabel schoolname, a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2;
+    JButton snotif, supload, sview, attendance, Tnotif, Tview, Tupload ;
+
+    public nova() {
+//username-password
+
+// choice of teacher or student which takes the user to the respective dashboard
+        Object[] possibleValues = { "Student", "Teacher" };
+         Object selectedValue = JOptionPane.showInputDialog(null,
+                     "Click to Proceed", "Student or Teacher",
+                     JOptionPane.INFORMATION_MESSAGE, null,
+                     possibleValues, possibleValues[0]);
+
+         //pop up dialogue box for the user to enter username and password
+         user=JOptionPane.showInputDialog("Enter your "+selectedValue+ " email id:");
+         pass = JOptionPane.showInputDialog("Enter registered password");
+
+         //pre-registered username and password
+         username= "username@gmail.com";
+         password= "password"; 
+         
+         while((!user.matches(username) && !pass.matches(password))||
+                 (!user.matches(username)  &&  pass.matches(password))||
+                 (!pass.matches(password)  && user.matches(username))) {
+                
+                
+                
+                    
+
+                
+              if(!user.matches(username) && !pass.matches(password))
+                {
+
+                    JOptionPane.showMessageDialog(null,
+                            "Access Denied ",
+                            "Login Fail",
+                            JOptionPane.PLAIN_MESSAGE);
+                    
+                    }
+             else  if(!user.matches(username)  &&  pass.matches(password))
+             {
+             
+                     JOptionPane.showMessageDialog(null,
+                             "Wrong Username, Try Again ",
+                             "Login Fail",
+                             JOptionPane.PLAIN_MESSAGE);
+                 
+
+             }
+             else if(!pass.matches(password)  && user.matches(username))
+             {
+                 JOptionPane.showMessageDialog(null,
+                         "Wrong password, Try Again ",
+                         "Login Fail",
+                         JOptionPane.PLAIN_MESSAGE);
+                 
+             }
+             else if((user==null) || (pass==null))
+            {
+
+                JOptionPane.showMessageDialog(null,
+                        "Enter the Values ",
+                        "Login Fail",
+                        JOptionPane.PLAIN_MESSAGE);
+                
+                }
+                user=JOptionPane.showInputDialog("Re-enter your "+selectedValue+ " email id:");
+                pass = JOptionPane.showInputDialog("Re-enter registered password");
+            
+    }   
+         if((user.matches(username)) && (pass.matches(password)))
+         {
+             JOptionPane.showConfirmDialog(null,
+                     "WELCOME TO "+selectedValue+" DASHBOARD",
+                     "login success",
+                     JOptionPane.YES_NO_OPTION);
+             
+              }
+    // re-directing user to respective dashboard
+    if(selectedValue == "Student"){
+        new myfile();
+
+        }
+    else if(selectedValue=="Teacher") {
+         new classlist();
+   
+    }  
+}
+}

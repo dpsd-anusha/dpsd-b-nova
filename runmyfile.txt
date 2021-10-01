@@ -1,0 +1,8 @@
+public class runmyfile {
+
+        public static void main(String[] args)
+        {
+            new myfile();
+        }
+
+    }

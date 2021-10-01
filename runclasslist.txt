@@ -1,0 +1,10 @@
+run class list
+
+public class runclasslist {
+
+        public static void main(String[] args)
+        {
+            new classlist();
+        }
+
+    }

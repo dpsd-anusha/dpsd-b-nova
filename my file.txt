@@ -1,0 +1,195 @@
+package test1;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+//import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.*;
+public class myfile extends JFrame implements ActionListener{
+
+		JFrame stud;
+		File file;
+		JButton snotif, supload, sview, attendance;
+		JPanel plain1, plain2, plain3, plain4, plain5 ;
+	    JLabel schoolname, a1, b1, c1, d1, e1, f1, g1, a2, b2, c2, d2, e2, f2;
+		private JFileChooser fileChooser;
+		
+		
+		
+		public myfile(){		
+			
+			stud= new JFrame("STUDENT DASHBOARD");
+	    	stud.setLayout(new GridLayout (6,5));
+	    	stud.setVisible(true);
+	    	stud.setSize(1000, 2000);
+			
+	    	plain1= new JPanel();
+	    	plain1.setLayout(new GridLayout (1,5));
+	    	plain1.setVisible(true);
+	    	plain1.setBackground(Color.pink);
+	    	
+	    	plain2= new JPanel();
+	    	plain2.setLayout(new GridLayout (1,5));
+	    	plain2.setVisible(true);
+	    	
+	    	plain3= new JPanel();
+	    	plain3.setLayout(new GridLayout (1,5));
+	    	plain3.setVisible(true);
+	    	plain3.setBackground(Color.pink);
+	    	
+	    	plain4= new JPanel();
+	    	plain4.setLayout(new GridLayout (1,5));
+	    	plain4.setVisible(true);
+	    	
+	    	
+	    	plain5= new JPanel();
+	    	plain5.setLayout(new GridLayout (1,5));
+	    	plain5.setVisible(true);  
+	    	plain5.setBackground(Color.pink);
+	    	
+	    	snotif= new JButton("VIEW NOTIFICATIONS");
+	    	snotif.addActionListener(this);
+	    	snotif.setEnabled(true);
+	    	snotif.setBackground(Color.yellow);
+	    	snotif.setOpaque(true);
+	    	
+	    	supload= new JButton("UPLOAD ASSIGNMENTS");
+	    	supload.addActionListener(this);
+	    	supload.setEnabled(true);
+	    	supload.setBackground(Color.yellow);
+	    	supload.setOpaque(true);
+	    	
+	    	sview= new JButton("REVIEW ASSIGNMENTS");
+	    	sview.addActionListener(this);
+	    	sview.setEnabled(true);
+	    	sview.setBackground(Color.yellow);
+	    	sview.setOpaque(true);
+	    	
+	    	a1= new JLabel();
+	    	a1.setBackground(Color.pink);
+	    	a1.setOpaque(true);
+	    	
+	    	b1= new JLabel();
+	    	b1.setBackground(Color.pink);
+	    	b1.setOpaque(true);
+	    	
+	    	c1= new JLabel();
+	    	c1.setBackground(Color.pink);
+	    	c1.setOpaque(true);
+	    	
+	    	d1= new JLabel();
+	    	d1.setBackground(Color.pink);
+	    	d1.setOpaque(true);
+	    	
+	    	e1= new JLabel();
+	    	e1.setBackground(Color.pink);
+	    	e1.setOpaque(true);
+	    	
+	    	f1= new JLabel();
+	    	f1.setBackground(Color.pink);
+	    	f1.setOpaque(true);
+	    	
+	    	
+	    	g1= new JLabel("STUDENT DASHBOARD");
+	    	g1.setFont(new Font("Times New Roman",Font.ITALIC,15));
+	    	g1.setOpaque(true);
+	    	g1.setBackground(Color.CYAN);
+	    	g1.setForeground(Color.BLACK);
+	    	
+	    	schoolname= new JLabel("DELHI PRIVATE SCHOOL DUBAI", SwingConstants.CENTER);
+	    	schoolname.setFont(new Font("Times New Roman",Font.BOLD,40));
+	    	schoolname.setOpaque(true);
+	    	schoolname.setBackground(Color.green);
+	    	schoolname.setForeground(Color.WHITE);
+	    	
+	    	plain2.add(a1, BorderLayout.WEST);
+	    	plain2.add(g1, BorderLayout.WEST);
+	    	plain2.add(f1, BorderLayout.WEST);
+	    	plain2.add(snotif, BorderLayout.WEST);
+	    	plain2.add(b1, BorderLayout.WEST);
+	    	
+	    	plain4.add(c1, BorderLayout.WEST);
+	    	plain4.add(supload, BorderLayout.WEST);
+	    	plain4.add(d1, BorderLayout.WEST);
+	    	plain4.add(sview, BorderLayout.WEST);
+	    	plain4.add(e1, BorderLayout.WEST);
+	    	
+	    	stud.add(schoolname, BorderLayout.NORTH);
+	    	stud.add(plain1, BorderLayout.NORTH);
+	    	stud.add(plain2, BorderLayout.NORTH);
+	    	stud.add(plain3, BorderLayout.NORTH);
+	    	stud.add(plain4, BorderLayout.NORTH);
+	    	stud.add(plain5, BorderLayout.NORTH);
+	    	
+	    	
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if(e.getSource()==supload) {
+				
+				JFileChooser fileChooser = new JFileChooser();
+				
+				fileChooser.setCurrentDirectory(new File(".")); 
+				
+				int response = fileChooser.showOpenDialog(fileChooser); 
+				
+
+	                boolean success = false;
+	                if(response == JFileChooser.APPROVE_OPTION) {
+	                     File file= new File(fileChooser.getSelectedFile().getAbsolutePath());
+	                     if (file.exists()) {
+	                         System.out.println("File already exists");
+
+	                        } 
+	                     else {
+	                            System.out.println("No such file exists, creating now");
+	                            try {
+	                                success = file.createNewFile();
+	                            } catch (IOException e1) {
+	                                e1.printStackTrace();
+	                            }
+	                            if (success) {
+	                                System.out.printf("Successfully created new file: %s%n", success);
+	                            } else {
+	                                System.out.printf("Failed to create new file: %s%n", success);
+	                            }
+	                        }
+
+	                }
+ // Creating new directory in Java, if it doesn't exists
+					
+					
+					
+				}
+			if(e.getSource()==sview) {
+                String file= fileChooser.getSelectedFile().getAbsolutePath();
+                 System.out.println(file);
+                 try {
+                        classlist.doReadFile(file);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+			}
+			
+			if(e.getSource()==snotif) {
+				JOptionPane.showConfirmDialog(null,
+                        getX(),
+                        "New Notifications",
+                        JOptionPane.YES_NO_OPTION);
+				
+			}
+			
+			}
+			
+		
+		}
+		
+		 
+		
+	
+
